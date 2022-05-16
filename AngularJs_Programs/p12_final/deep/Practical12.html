@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angularjs Custom Directive</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="calculator.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        input,
+        button {
+            border: 10px solid white;
+            box-shadow: 0px 0px 5px rgba(60, 66, 66, 0.356);
+            border-radius: 5px;
+            background: white;
+            font-size: medium;
+        }
+    </style>
+</head>
+
+<body ng-app="app">
+    <ng-calculator></ng-calculator>
+</body>
+
+</html>

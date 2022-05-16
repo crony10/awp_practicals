@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <div ng-app="myApp" ng-controller="costCtrl">
+        <table>
+            <tr>
+                <td>Enter Number</td>
+                <td><input type="text" ng-model="a"></td>
+            </tr>
+            <tr>
+                <td><input type="button" ng-click="primeNumber()" value="check prime or not"></td>
+            </tr>
+        </table><br />
+        {{result}}
+    </div>
+    <script> var app = angular.module('myApp', []); 
+    app.controller('costCtrl', function ($scope) {
+            $scope.primeNumber = function () {
+                var n = $scope.a;
+                $scope.result = ""; 
+                var i, 
+                isprime = true; 
+                for (i = 2; i < n; i++) {
+                    if (n % i == 0) {
+                        isprime = false; 
+                        break;
+                    }
+                }
+                if (isprime) {
+                    $scope.result = n + " is prime";
+                } else {
+                    $scope.result = n + " is not prime";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

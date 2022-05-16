@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>first project</title>
+    </head>
+    <body>
+        <form><p>ENTER COLOUR </p>
+            <input type="text" id="d" />
+            <input type="button" value="submit" onclick="colorchange()" /> 
+        </form>
+
+        <script>
+            function colorchange(){
+                var color = document.getElementById("d").value;
+                document.body.style.backgroundColor = color; 
+            }
+        </script>
+    </body>
+</html>

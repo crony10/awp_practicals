@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+  <h2>Validation Example</h2>
+
+  <form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+
+    <p>Username:<br>
+      <input type="text" name="user" ng-model="user" required>
+      <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+        <span ng-show="myForm.user.$error.required">Username is required.</span>
+      </span>
+    </p>
+
+    <p>Email:<br>
+      <input type="email" name="email" ng-model="email" required>
+      <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+        <span ng-show="myForm.email.$error.required">Email is required.</span>
+        <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+      </span>
+    </p>
+
+    <p>password:<br>
+      <input type="password" name="password" ng-model="password" ng-minlength='3' ng-maxlength='10' required>
+
+      <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+        <span ng-show="myForm.password.$error.required">Email is required.</span>
+        <span ng-show="myForm.password.$error.minlength">minimum length 3 address.</span>
+        <span ng-show="myForm.password.$error.maxlength">maximum length 10 address.</span>
+      </span>
+    </p>
+
+    <p>confirm password:<br>
+      <input type="password" name="cpassword" ng-model='passMatch' ng-minlength='3' ng-change='checkPass()' required>
+
+      <span style="color:red" ng-show="myForm.cpassword.$dirty && myForm.cpassword.$invalid">
+        <span ng-show="myForm.cpassword.$error.required">Email is required.</span>
+        <span ng-show="myForm.cpassword.$error.minlength">minimum length 3 address.</span>
+      </span>
+    </p>
+    <pre>Password Matched: {{matched}}</pre>
+
+    <p>contact:<br>
+      <input type="text" ng-model="contact" name="contact" ng-pattern="ph_numbr" required>
+
+      <span style="color:red" ng-show="myForm.contact.$dirty && myForm.contact.$invalid">
+        <span style="color:red" ng-show="myForm.contact.$error.required && myForm.contact.$dirty">Contact number is a
+          required field</span>
+        <span style="color:red" ng-show="myForm.contact.$error.pattern">Please enter a 10 digit number</span>
+
+      </span>
+    </p>
+
+
+
+    <p>Gender:<br>
+      <input type="radio" ng-model="myVar" value="Male" required>Male
+      <input type="radio" ng-model="myVar" value="Female" required>Female
+      <input type="radio" ng-model="myVar" value="Ohter" required>Ohter
+
+      </span>
+    </p>
+    <p>{{myVar}}</p>
+    <p>
+
+
+    <p>Department:<br>
+      <select ng-model="myVar">
+        <option value="IT">IT
+        <option value="Chem">Chemical
+        <option value="Mech">Mechanical
+        <option value="Comp">Computer
+      </select>
+
+      </span>
+    </p>
+    <p>
+
+
+      <input type="submit" ng-click="register()" ng-disabled="myForm.$invalid">
+    </p>
+
+  </form>
+
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('validateCtrl', function ($scope) {
+      $scope.user = 'John Doe';
+      $scope.email = 'john.doe@gmail.com';
+      $scope.matched = false;
+      $scope.ph_numbr = /^\+?\d{10}$/;
+      $scope.checkPass = function () {
+        $scope.matched = $scope.password === $scope.passMatch;
+      };
+      $scope.register = function () {
+        if (!$scope.matched) {
+          alert('Passwords do not match, please try again.');
+        } else {
+          alert('Passwords match.');
+        }
+      };
+
+    });
+
+
+
+
+  </script>
+
+</body>
+
+</html>
